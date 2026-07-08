@@ -1,5 +1,6 @@
 <% content_for :title, @breed.name %>
-<div class="card">
+
+<div class="card shadow">
   <div class="card-body">
 
     <h1 class="card-title"><%= @breed.name %></h1>
@@ -10,10 +11,9 @@
           style: "max-width: 400px;" %>
     <% end %>
 
-    <p class="text-muted">
-      Total Reviews:
-      <strong><%= @breed.reviews.count %></strong>
-    </p>
+    <span class="badge bg-primary mb-3">
+      Reviews Available: <%= @breed.reviews.count %>
+    </span>
 
     <hr>
 
@@ -23,7 +23,12 @@
       <div class="card mb-3">
         <div class="card-body">
           <h5><%= review.reviewer_name %></h5>
-          <p><strong>Rating:</strong> <%= review.rating %>/5</p>
+
+          <p>
+            <strong>Rating:</strong>
+            <%= review.rating %>/5
+          </p>
+
           <p><%= review.comment %></p>
         </div>
       </div>
