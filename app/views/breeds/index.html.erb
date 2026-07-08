@@ -1,5 +1,12 @@
 <h1>Dog Breeds</h1>
 
+<%= form_with url: breeds_path, method: :get, local: true do %>
+  <%= text_field_tag :search, params[:search], placeholder: "Search breeds..." %>
+  <%= submit_tag "Search" %>
+<% end %>
+
+<hr>
+
 <ul>
   <% @breeds.each do |breed| %>
     <li>
