@@ -1,2 +1,16 @@
-<h1>Breeds#show</h1>
-<p>Find me in app/views/breeds/show.html.erb</p>
+<h1><%= @breed.name %></h1>
+
+<h2>Reviews</h2>
+
+<ul>
+  <% @breed.reviews.each do |review| %>
+    <li>
+      <strong><%= review.reviewer_name %></strong>
+      (Rating: <%= review.rating %>/5)
+      <br>
+      <%= review.comment %>
+    </li>
+  <% end %>
+</ul>
+
+<%= link_to "Back to Breeds", breeds_path %>
