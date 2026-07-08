@@ -5,6 +5,17 @@ Review.destroy_all
 BreedImage.destroy_all
 Breed.destroy_all
 
+comments = [
+  "Friendly and energetic breed.",
+  "Excellent family dog.",
+  "Very intelligent and easy to train.",
+  "Needs regular exercise.",
+  "Great companion for active owners.",
+  "Loyal and affectionate.",
+  "Good with children.",
+  "Easy to care for."
+]
+
 response = HTTParty.get("https://dog.ceo/api/breeds/list/all")
 breeds = response["message"]
 
@@ -28,7 +39,7 @@ breeds.each do |breed_name, subbreeds|
       breed: breed,
       reviewer_name: Faker::Name.name,
       rating: rand(1..5),
-      comment: Faker::Lorem.sentence
+      comment: comments.sample
     )
   end
 end

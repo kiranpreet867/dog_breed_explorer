@@ -1,6 +1,13 @@
 <div class="card">
   <div class="card-body">
+
     <h1 class="card-title"><%= @breed.name %></h1>
+
+    <% if @breed.breed_images.any? %>
+      <%= image_tag @breed.breed_images.first.image_url,
+          class: "img-fluid rounded mb-3",
+          style: "max-width: 400px;" %>
+    <% end %>
 
     <p class="text-muted">
       Total Reviews:
@@ -15,17 +22,13 @@
       <div class="card mb-3">
         <div class="card-body">
           <h5><%= review.reviewer_name %></h5>
-
-          <p>
-            <strong>Rating:</strong>
-            <%= review.rating %>/5
-          </p>
-
+          <p><strong>Rating:</strong> <%= review.rating %>/5</p>
           <p><%= review.comment %></p>
         </div>
       </div>
     <% end %>
 
     <%= link_to "← Back to Dog Breeds", breeds_path, class: "btn btn-primary" %>
+
   </div>
 </div>
