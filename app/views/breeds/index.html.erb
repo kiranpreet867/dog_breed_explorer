@@ -16,24 +16,30 @@
   </div>
 <% end %>
 
-<div class="row">
-  <% @breeds.each do |breed| %>
-    <div class="col-md-4 mb-3">
-      <div class="card h-100">
-        <div class="card-body">
-          <h5><%= breed.name %></h5>
+<% if @breeds.any? %>
+  <div class="row">
+    <% @breeds.each do |breed| %>
+      <div class="col-md-4 mb-3">
+        <div class="card h-100">
+          <div class="card-body">
+            <h5><%= breed.name %></h5>
 
-          <p>
-            Reviews:
-            <strong><%= breed.reviews.count %></strong>
-          </p>
+            <p>
+              Reviews:
+              <strong><%= breed.reviews.count %></strong>
+            </p>
 
-          <%= link_to "View Details", breed_path(breed), class: "btn btn-success" %>
+            <%= link_to "View Details", breed_path(breed), class: "btn btn-success" %>
+          </div>
         </div>
       </div>
-    </div>
-  <% end %>
-</div>
+    <% end %>
+  </div>
+<% else %>
+  <p class="alert alert-warning">
+    No dog breeds found.
+  </p>
+<% end %>
 
 <div class="mt-4">
   <%= paginate @breeds %>
