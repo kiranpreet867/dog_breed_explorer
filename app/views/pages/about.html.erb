@@ -1,22 +1,34 @@
 <h1>About Dog Breed Explorer</h1>
 
 <p>
-Dog Breed Explorer is a Ruby on Rails application that displays dog breed
-information collected from the Dog CEO API.
+Dog Breed Explorer is a Ruby on Rails application that lets users browse,
+search, and view information about dog breeds.
 </p>
 
 <p>
-Features include:
+The main data source is the Dog CEO API:
+<strong>https://dog.ceo/api/breeds/list/all</strong>
 </p>
+
+<p>
+This API provides dog breed names. The project also uses the Faker gem to
+generate sample reviews for each breed.
+</p>
+
+<h2>Database Tables</h2>
 
 <ul>
-  <li>Browse dog breeds</li>
-  <li>Search breeds</li>
-  <li>View breed reviews</li>
-  <li>Pagination</li>
+  <li><strong>Breeds:</strong> stores dog breed names.</li>
+  <li><strong>Breed Images:</strong> stores image URLs for dog breeds.</li>
+  <li><strong>Reviews:</strong> stores sample reviews and ratings for each breed.</li>
 </ul>
 
-<p>
-API Source:
-https://dog.ceo/api/breeds/list/all
-</p>
+<h2>Project Features</h2>
+
+<ul>
+  <li>Browse all dog breeds</li>
+  <li>Search dog breeds by name</li>
+  <li>View individual breed details</li>
+  <li>View reviews for each breed</li>
+  <li>Pagination for large data navigation</li>
+</ul>
