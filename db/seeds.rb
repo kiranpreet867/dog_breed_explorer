@@ -1,9 +1,28 @@
-# This file should ensure the existence of records required to run the application in every environment (production,
-# development, test). The code here should be idempotent so that it can be executed at any point in every environment.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Example:
-#
-#   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
-#     MovieGenre.find_or_create_by!(name: genre_name)
-#   end
+require "httparty"
+require "faker"
+
+Breed.destroy_all
+BreedImage.destroy_all
+Review.destroy_all
+
+response = HTTParty.get("https://dog.ceo/api/breeds/list/all")
+breeds = response["message"]
+
+breeds.each do |breed_name, subbreeds|
+  breed = Breed.create!(
+    name: breed_name.capitalize,
+    temperament: "Unknown"
+  )
+
+  3.times do
+    Review.create!(
+      breed: breed,
+      reviewer_name: Faker::Name.name,
+      rating: rand(1..5),
+      comment: Faker::Lorem.sentence
+    )
+  end
+end
+
+puts "Created #{Breed.count} breeds"
+puts "Created #{Review.count} reviews"
