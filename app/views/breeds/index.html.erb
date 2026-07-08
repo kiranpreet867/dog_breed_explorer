@@ -1,9 +1,13 @@
 <h1 class="mb-4">Dog Breeds</h1>
 
+<p class="lead">
+  Browse over 100 dog breeds, search by name, and read sample reviews.
+</p>
+
 <%= form_with url: breeds_path, method: :get, local: true, class: "mb-4" do %>
   <div class="row">
     <div class="col-md-8">
-      <%= text_field_tag :search, params[:search], placeholder: "Search breeds...", class: "form-control" %>
+      <%= text_field_tag :search, params[:search], placeholder: "Search for a dog breed...", class: "form-control" %>
     </div>
 
     <div class="col-md-4">
